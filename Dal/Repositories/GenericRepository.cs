@@ -9,11 +9,16 @@ namespace Dal.Repositories
 {
     public class GenericRepository <TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private VictimContext _context;
+        private readonly VictimContext _context;
 
         public GenericRepository(VictimContext context)
         {
             _context = context;
+        }
+
+        public TEntity GetOne(string key)
+        {
+            return GetDbSet().Find(key);
         }
 
         public IQueryable<TEntity> GetAll()

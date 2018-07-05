@@ -6,6 +6,6 @@ namespace Dal.Interfaces
     {
         IGenericRepository<User> Users();
 
-        void SaveAsync();
+        void SaveChanges();
     }
 }
