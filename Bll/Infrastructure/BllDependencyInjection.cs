@@ -1,4 +1,6 @@
-﻿using Dal.Ef;
+﻿using Bll.Interfaces;
+using Bll.Services;
+using Dal.Ef;
 using Dal.Interfaces;
 using Dal.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +17,10 @@ namespace Bll.Infrastructure
                 options.UseSqlServer(connection, opt => opt.MigrationsAssembly("AuthDemo"));
             });
 
-            service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            service.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
+            service.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            service.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            service.AddScoped<IUserService, UserService>();
         }
     }
 }

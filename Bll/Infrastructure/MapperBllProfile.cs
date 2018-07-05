@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Bll.Dto.User;
+using Dal.Entities;
 
 namespace Bll.Infrastructure
 {
@@ -6,7 +8,8 @@ namespace Bll.Infrastructure
     {
         public MapperBllProfile()
         {
-            
+            CreateMap<UserCreateDto, User>();
+            CreateMap<User, UserEntityDto>();
         }
     }
 }

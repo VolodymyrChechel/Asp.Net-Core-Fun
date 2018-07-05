@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AuthDemo.DependencyInjection;
 using AuthDemo.Security;
 using Bll.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -60,6 +61,7 @@ namespace AuthDemo
                 });
 
             services.AddBllServices(Configuration["Connection:Sql"]);
+            services.AddMapper();
 
             services.AddMvc();
         }

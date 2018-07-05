@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Bll.Dto.User;
 using Bll.Interfaces;
+using Dal.Entities;
 using Dal.Interfaces;
 
 namespace Bll.Services
@@ -13,11 +14,17 @@ namespace Bll.Services
         {
             var user = UnitOfWork.Users.GetOne(id);
 
+            var userDto = Mapper.Map<User, UserEntityDto>(user);
+
+            return userDto;
         }
 
         public void Create(UserCreateDto userCreateDto)
         {
-            throw new System.NotImplementedException();
+            var user = Mapper.Map<UserCreateDto, User>(userCreateDto);
+
+            UnitOfWork.Users.Add(user);
+            UnitOfWork.SaveChanges();
         }
     }
 }
