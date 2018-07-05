@@ -13,10 +13,7 @@ namespace Dal.Repositories
             _victimContext = context;
         }
 
-        public IGenericRepository<User> Users()
-        {
-            return new GenericRepository<User>(_victimContext);
-        }
+        IGenericRepository<User> IUnitOfWork.Users => new GenericRepository<User>(_victimContext);
 
         public void SaveChanges()
         {

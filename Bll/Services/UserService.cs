@@ -1,4 +1,5 @@
-﻿using Bll.Dto.User;
+﻿using AutoMapper;
+using Bll.Dto.User;
 using Bll.Interfaces;
 using Dal.Interfaces;
 
@@ -6,11 +7,12 @@ namespace Bll.Services
 {
     public class UserService : BaseService, IUserService
     {
-        public UserService(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper) { }
 
         public UserEntityDto Get(int id)
         {
-            UnitOfWork.Users().
+            var user = UnitOfWork.Users.GetOne(id);
+
         }
 
         public void Create(UserCreateDto userCreateDto)

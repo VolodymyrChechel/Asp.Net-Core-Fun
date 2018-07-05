@@ -6,7 +6,7 @@ namespace Dal.Interfaces
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        TEntity GetOne(string key);
+        TEntity GetOne(object key);
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate);
         void Add(TEntity entity);

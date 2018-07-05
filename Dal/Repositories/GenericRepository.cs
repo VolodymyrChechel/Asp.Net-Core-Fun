@@ -16,7 +16,7 @@ namespace Dal.Repositories
             _context = context;
         }
 
-        public TEntity GetOne(string key)
+        public TEntity GetOne(object key)
         {
             return GetDbSet().Find(key);
         }
